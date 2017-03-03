@@ -15,13 +15,13 @@ Instructions to build the oauth2_proxy binary :
 
 Instructions for using 
 1. any truststore certificates you want to trust need to be configured in the default OS truststore
-2. 
+2. Follow command line instructions for oauth2_proxy project. Keycloak specifics are indicated below. 
 ./oauth2_proxy -provider=keycloak -client-id <keycloak-client> -client-secret <keycloak-client-secret> 
 <keycloak-client> = Client name from Keycloak realm
 <keycloak-client-secret> = From client configuration
 Other options as per below. 
 
-for authorising users you can either add specific e-mail addresses into the --authenticated-emails-file option file or you can specify a authorised e-mail domain.
+For authorising users you can either add specific e-mail addresses into the --authenticated-emails-file option file or you can specify a authorised e-mail domain with -email-domain.
 
 For the Keycloak client : 
 Client protocol : openid-connect,
@@ -32,7 +32,7 @@ Enable :
  - Direct Access Grants Enabled
 
 
-Hope this is helpful. lots more todo and to come.
+Hope this is helpful. Lots more todo and to come.
 
 
 -------------------------------------------
