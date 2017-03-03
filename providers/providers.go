@@ -22,6 +22,8 @@ func New(provider string, p *ProviderData) Provider {
 		return NewMyUsaProvider(p)
 	case "linkedin":
 		return NewLinkedInProvider(p)
+	case "keycloak":
+		return NewKeycloakProvider(p)
 	case "facebook":
 		return NewFacebookProvider(p)
 	case "github":

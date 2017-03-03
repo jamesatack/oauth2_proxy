@@ -1,5 +1,41 @@
-oauth2_proxy
+oauth2_proxy with Keycloak provider
 =================
+
+Based on the https://github.com/bitly/oauth2_proxy project.
+This repo adds a (very) basic Keycloak provider and integrates into providers list.
+
+It supports OpenID-Connect workflow with confidential Access Type in Keycloak. Tested with Keycloak 2.5.x
+
+Apologies that this is clearly written by an ops monkey who has no idea how to use repo tools. Any reasonably written line of code is thanks to Google.
+
+Instructions to build the oauth2_proxy binary :
+1. modify the keycloak.go code to specify the Keycloak host URL and realm name as indicated. (Todo : command line parameters)
+2. run the ./dist.sh tool with sudo (what? why does a build tool need to be root. Testing disabled as I haven't had time to write a test module)
+3. find the linux 64 bit binary in the dist directory 
+
+Instructions for using 
+1. any truststore certificates you want to trust need to be configured in the default OS truststore
+2. 
+./oauth2_proxy -provider=keycloak -client-id <keycloak-client> -client-secret <keycloak-client-secret> 
+<keycloak-client> = Client name from Keycloak realm
+<keycloak-client-secret> = From client configuration
+Other options as per below. 
+
+for authorising users you can either add specific e-mail addresses into the --authenticated-emails-file option file or you can specify a authorised e-mail domain.
+
+For the Keycloak client : 
+Client protocol : openid-connect,
+Access type : confidential,
+Enable :
+ - Standard Flow Enabled
+ - Implicit Flow Enabled
+ - Direct Access Grants Enabled
+
+
+Hope this is helpful. lots more todo and to come.
+
+
+-------------------------------------------
 
 <small>(This project was renamed from Google Auth Proxy - May 2015)</small>
 
